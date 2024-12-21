@@ -1,0 +1,76 @@
+/* General container styling */
+.getin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #e0f7fa, #f0f8ff);
+  }
+  
+  /* Form styling */
+  .getin-form {
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Title styling */
+  .getin-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0077b6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Field styling */
+  .getin-field {
+    margin-bottom: 15px;
+  }
+  
+  .getin-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0077b6;
+    margin-bottom: 8px;
+  }
+  
+  .getin-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b3cde0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s;
+  }
+  
+  .getin-select:focus {
+    border-color: #0077b6;
+    outline: none;
+  }
+  
+  /* Submit button styling */
+  .getin-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #0077b6;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .getin-button:hover {
+    background-color: #005f8a;
+  }
+  

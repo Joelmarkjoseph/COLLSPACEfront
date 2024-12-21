@@ -1,0 +1,75 @@
+/* General styling for the body */
+
+/* Styling for the login container */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Styling for the login card */
+.login-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+/* Heading */
+.login-card h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Form fields styling */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #0072ff;
+}
+
+/* Error alert styling */
+.error-alert {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Login button styling */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #0072ff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #005bb5;
+}
