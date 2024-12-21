@@ -13,10 +13,13 @@ const StudentLogin = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${backendURL}/login`, {
-        rollno,
-        password,
-      });
+      const response = await axios.post(
+        "https://collspaceback.onrender.com/login",
+        {
+          rollno,
+          password,
+        }
+      );
 
       if (response.data.token) {
         // Save the token in localStorage
