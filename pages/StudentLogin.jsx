@@ -9,7 +9,7 @@ const StudentLogin = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const backendURL = import.meta.env.backendurl;
+  const backendURL = "https://collspaceback.onrender.com";
 
   const handleLogin = async () => {
     try {
