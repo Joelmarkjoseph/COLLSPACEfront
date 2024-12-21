@@ -18,6 +18,7 @@ const Signup = () => {
 
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpError, setOtpError] = useState("");
+  const backendURL = import.meta.env.backendurl;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +26,7 @@ const Signup = () => {
   };
 
   const handleVerifyOtp = async () => {
-    const response = await fetch("http://127.0.0.1:5000/verifyotp", {
+    const response = await fetch(`${backendURL}/verifyotp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +47,7 @@ const Signup = () => {
   };
 
   const handleSendOtp = async () => {
-    const response = await fetch("http://127.0.0.1:5000/sendotp", {
+    const response = await fetch(`${backendURL}/sendotp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +74,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/add_student", {
+      const response = await fetch(`${backendURL}/add_student`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

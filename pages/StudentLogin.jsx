@@ -9,10 +9,11 @@ const StudentLogin = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const backendURL = import.meta.env.backendurl;
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post(`${backendURL}/login`, {
         rollno,
         password,
       });
