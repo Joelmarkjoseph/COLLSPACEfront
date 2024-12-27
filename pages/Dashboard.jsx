@@ -16,7 +16,7 @@ const Dashboard = () => {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:5000/dashboard", {
+        .get("https://collspaceback.onrender.com/dashboard", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
