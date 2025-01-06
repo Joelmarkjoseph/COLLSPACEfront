@@ -11,12 +11,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
-    console.log(token);
     if (!token) {
-      // navigate("/Studentlogin");
       console.log("No Token");
     } else {
-      const burld = "http://127.0.0.1:5000/dashboard";
       const burlp = "https://collspaceback.onrender.com/dashboard";
       axios
         .get(burlp, {
@@ -30,7 +27,6 @@ const Dashboard = () => {
           if (error.response?.status === 401) {
             setError("Session expired. Please log in again.");
             localStorage.removeItem("jwtToken");
-            // navigate("/Studentlogin");
           } else {
             setError("Failed to load dashboard data.");
           }
@@ -41,6 +37,16 @@ const Dashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     navigate("/StudentLogin");
+  };
+
+  const getLastFourDigits = (mobilenoStr) => {
+    const mobileno = mobilenoStr.toString(); // Convert integer to string
+    if (!mobileno || mobileno.length < 4) return "N/A";
+    let result = "";
+    for (let i = mobileno.length - 4; i < mobileno.length; i++) {
+      result += mobileno[i];
+    }
+    return result;
   };
 
   return (
@@ -55,6 +61,10 @@ const Dashboard = () => {
         </header>
 
         {error && <div className="error-message">{error}</div>}
+
+        <div className="greet">
+          <p>Welcome {studentsData[0]?.name || "Student"}</p>
+        </div>
 
         {studentsData.length > 0 ? (
           <table className="students-table">
@@ -77,7 +87,7 @@ const Dashboard = () => {
                   <td>{student.year}</td>
                   <td>{student.branch}</td>
                   <td>{student.section}</td>
-                  <td>{student.mobileno}</td>
+                  <td>XXXXXX{getLastFourDigits(student.mobileno)}</td>
                   <td>{student.college}</td>
                 </tr>
               ))}
