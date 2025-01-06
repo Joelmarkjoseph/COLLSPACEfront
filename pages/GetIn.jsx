@@ -8,10 +8,10 @@ const GetIn = () => {
 
   const colleges = [
     "Select College",
-    "College A",
-    "College B",
-    "College C",
-    "College D",
+    "PBR Visvodaya Institute of Technology and Science",
+    "RSR College",
+    "DBS Engineering College",
+    "Sri Venkateshwara University",
   ];
 
   const roles = ["Select Role", "Principal", "HoD", "Professor", "Student"];
