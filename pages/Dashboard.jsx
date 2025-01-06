@@ -11,12 +11,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
-
+    console.log(token);
     if (!token) {
-      navigate("/login");
+      // navigate("/Studentlogin");
+      console.log("No Token");
     } else {
+      const burld = "http://127.0.0.1:5000/dashboard";
+      const burlp = "https://collspaceback.onrender.com/dashboard";
       axios
-        .get("https://collspaceback.onrender.com/dashboard", {
+        .get(burlp, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -27,7 +30,7 @@ const Dashboard = () => {
           if (error.response?.status === 401) {
             setError("Session expired. Please log in again.");
             localStorage.removeItem("jwtToken");
-            navigate("/login");
+            // navigate("/Studentlogin");
           } else {
             setError("Failed to load dashboard data.");
           }

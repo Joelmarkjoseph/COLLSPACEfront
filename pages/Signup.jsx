@@ -17,6 +17,7 @@ const Signup = () => {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpError, setOtpError] = useState("");
   const backendURL = import.meta.env.backendurl;
+  const burl = "http://127.0.0.1:5000";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
