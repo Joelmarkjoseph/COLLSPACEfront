@@ -1,3 +1,4 @@
+
 /* General styling for the body */
 
 /* Styling for the login container */
@@ -72,4 +73,27 @@
 
 .btn-login:hover {
   background-color: #005bb5;
+}
+
+#loadmsg{
+  padding-top: 30px;
+}
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.loading-gif {
+  width: 100px; /* Adjust the size of the GIF */
+  height: 100px;
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
 }

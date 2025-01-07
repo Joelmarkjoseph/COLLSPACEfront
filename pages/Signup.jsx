@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Signup.css"; // Import the CSS file
 import Navbarall from "../components/Navbarall";
+import { useNavigate } from "react-router-dom";
+
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     rollno: "",
     name: "",
@@ -84,6 +88,7 @@ const Signup = () => {
       if (response.ok) {
         const result = await response.json();
         alert("Signup successful: " + result.message);
+        navigate("/Studentlogin");
       } else {
         const error = await response.json();
         console.error("Server responded with error:", error);
