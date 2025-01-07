@@ -84,12 +84,12 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
 
 .loading-gif {
-  width: 100px; /* Adjust the size of the GIF */
-  height: 100px;
+  width: 350px; /* Adjust the size of the GIF */
+  height: 300px;
 }
 
 .loading-container p {
