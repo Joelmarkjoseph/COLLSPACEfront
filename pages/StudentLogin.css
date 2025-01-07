@@ -88,8 +88,8 @@
 }
 
 .loading-gif {
-  width: 10vw; /* Adjust the size of the GIF */
-  height: 10vw;
+  width: 30vw; /* Adjust the size of the GIF */
+  height: 30vw;
 }
 
 .loading-container p {
