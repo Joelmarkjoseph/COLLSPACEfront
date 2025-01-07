@@ -8,6 +8,7 @@ import StudentLogin from "../pages/StudentLogin";
 import Signup from "../pages/Signup";
 import ProfessorLogin from "../pages/ProfessorLogin";
 import Dashboard from "../pages/Dashboard";
+import ProfSignup from "../pages/ProfSignup";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Studentlogin" element={<StudentLogin />} />
         <Route path="/ProfessorLogin" element={<ProfessorLogin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profsignup" element={<ProfSignup />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>

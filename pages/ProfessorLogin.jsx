@@ -1,125 +1,101 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./ProfessorLogin.css";
 import Navbarall from "../components/Navbarall";
 
 const ProfessorLogin = () => {
-  const [rollNo, setRollNo] = useState("");
-  const [otp, setOtp] = useState("");
-  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [rollno, setRollno] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const sendOtp = async () => {
-    if (!rollNo) {
-      alert("Please enter your Roll No.");
-      return;
-    }
+  const handleLogin = async () => {
+    setIsLoading(true); // Start loading
     try {
-      const response = await fetch("http://localhost:5000/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rollNo }),
-      });
+      const response = await axios.post(
+        "https://collspaceback.onrender.com/login",
+        {
+          rollno,
+          password,
+        }
+      );
 
-      const data = await response.json();
-      if (data.success) {
-        setIsOtpSent(true);
-        alert("OTP sent successfully!");
+      if (response.data.token) {
+        localStorage.setItem("jwtToken", response.data.token);
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
+      } else if (response.data.message) {
+        alert(response.data.message);
+        setIsLoading(false); // Stop loading
       } else {
-        alert("Failed to send OTP. Please try again.");
+        alert("Unexpected response from server.");
+        setIsLoading(false); // Stop loading
       }
     } catch (error) {
-      console.error("Error sending OTP:", error);
-      alert("An error occurred. Please try again.");
+      console.error("Error during login:", error);
+      alert("Failed to log in. Please try again.");
+      setIsLoading(false); // Stop loading
     }
   };
 
-  const verifyOtp = async (e) => {
-    e.preventDefault();
-    if (!otp) {
-      alert("Please enter the OTP.");
-      return;
-    }
-    try {
-      const response = await fetch("http://localhost:5000/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rollNo, otp }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        alert("Login successful!");
-        window.location.href = "/profdashboard"; // Navigate to dashboard
-      } else {
-        alert("Invalid OTP. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error verifying OTP:", error);
-      alert("An error occurred. Please try again.");
-    }
+  const handleNewuser = () => {
+    navigate("/profsignup");
   };
 
   return (
     <>
-      <Navbarall />
-      <div className="login-container">
-        <form onSubmit={verifyOtp} className="login-form">
-          <h1 className="login-title">Professor Login</h1>
-
-          {/* Roll Number Input */}
-          <div className="login-field">
-            <label htmlFor="rollNo" className="login-label">
-              ID Number:
-            </label>
-            <input
-              type="text"
-              id="rollNo"
-              value={rollNo}
-              onChange={(e) => setRollNo(e.target.value)}
-              placeholder="Enter your Roll No"
-              className="login-input"
-              disabled={isOtpSent}
-            />
-          </div>
-          {!isOtpSent && (
-            <button type="button" className="otp-button" onClick={sendOtp}>
-              Send OTP
-            </button>
-          )}
-
-          {/* OTP Input */}
-          {isOtpSent && (
-            <>
-              <div className="login-field">
-                <label htmlFor="otp" className="login-label">
-                  OTP:
-                </label>
+      {isLoading ? (
+        <div className="loading-container">
+          <img
+            src="/loadgif.gif" // Path to your loading GIF
+            alt="Loading"
+            className="loading-gif"
+          />
+          <p>Loading your dashboard...</p>
+        </div>
+      ) : (
+        <>
+          <Navbarall />
+          <div className="login-page-container">
+            <div className="login-card">
+              <h2>Login</h2>
+              <div className="form-group">
+                <label>ID Number</label>
                 <input
-                  type="password"
-                  id="otp"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="Enter OTP"
-                  className="login-input"
+                  type="text"
+                  placeholder="Enter Roll No"
+                  value={rollno}
+                  onChange={(e) => setRollno(e.target.value)}
+                  required
                 />
               </div>
-
-              {/* Submit Button */}
-              <button type="submit" className="login-button">
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              {errorMessage && (
+                <div className="error-alert">{errorMessage}</div>
+              )}
+              <button className="btn-login" onClick={handleLogin}>
                 Login
+              </button>{" "}
+              <br /> <br />
+              <button className="btn-login" onClick={handleNewuser}>
+                New User? Signup
               </button>
-            </>
-          )}
-          <br />
-          <button
-            onClick={() => {
-              window.location.href = "/signup";
-            }}
-            className="new-button"
-          >
-            New?
-          </button>
-        </form>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
