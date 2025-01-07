@@ -50,7 +50,7 @@ const StudentLogin = () => {
       {isLoading ? (
         <div className="loading-container">
           <img
-            src="/loadgif3.gif" // Path to your loading GIF
+            src="/loadgif.gif" // Path to your loading GIF
             alt="Loading"
             className="loading-gif"
           />
