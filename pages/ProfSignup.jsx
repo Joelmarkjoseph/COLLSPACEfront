@@ -7,10 +7,10 @@ const ProfSignup = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    idNo: "",
+    id: "",
     name: "",
-    dept: "",
-    mobileno: "",
+    department: "",
+    phone: "",
     college: "",
     email: "",
     password: "",
