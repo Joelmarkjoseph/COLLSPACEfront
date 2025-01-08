@@ -12,7 +12,7 @@ const ProfSignup = () => {
     dept: "",
     mobileno: "",
     college: "",
-    mailid: "",
+    email: "",
     password: "",
     otp: "", // OTP input field
   });
